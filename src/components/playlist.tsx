@@ -3,7 +3,7 @@ import React from 'react'
 import { playlist, Playlist as PlayListType } from '@/data/song'
 import { cn } from '@/lib/utils'
 
-const Playlist = ({ currentPlayList, setPlaylist }: { currentPlayList: PlayListType | undefined; setPlaylist: React.Dispatch<React.SetStateAction<PlayListType | undefined>> }) => {
+const Playlist = ({ currentPlayList, setPlaylist }: { currentPlayList: PlayListType | undefined; setPlaylist: React.Dispatch<React.SetStateAction<PlayListType>> }) => {
   return (
     <div className='col-span-3 row-span-5 bg-black p-4'>
       <h1 className='mb-2'>My Playlists</h1>

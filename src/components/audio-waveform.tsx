@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react'
 
-export default function AudioWaveform() {
-  const [isPlaying, setIsPlaying] = useState(true)
+export default function AudioWaveform({ playingSongId, isPaused }: { playingSongId: number | undefined; isPaused: boolean }) {
+  const isPlaying = !!playingSongId
   const [bars, setBars] = useState<{ positive: number; negative: number }[]>([])
 
   useEffect(() => {
@@ -16,7 +16,7 @@ export default function AudioWaveform() {
 
   useEffect(() => {
     let interval: NodeJS.Timeout
-    if (isPlaying) {
+    if (isPlaying && !isPaused) {
       interval = setInterval(() => {
         setBars(prevBars =>
           prevBars.map(() => {
@@ -36,11 +36,7 @@ export default function AudioWaveform() {
     return () => {
       if (interval) clearInterval(interval)
     }
-  }, [isPlaying])
-
-  const togglePlayback = () => {
-    setIsPlaying(!isPlaying)
-  }
+  }, [isPlaying, isPaused])
 
   return (
     <div className='flex items-center justify-center gap-1 mb-8 px-4 relative h-full col-span-3 row-span-2 col-start-1 row-start-6 bg-black'>
@@ -50,7 +46,7 @@ export default function AudioWaveform() {
             className={`bg-accent transition-all duration-100 ease-out opacity-100 w-1 mb-px`}
             style={{
               height: `${bar.positive}px`,
-              transform: isPlaying ? 'scaleY(1)' : 'scaleY(0.3)',
+              transform: isPlaying && !isPaused ? 'scaleY(1)' : 'scaleY(0.3)',
             }}
           />
         </div>

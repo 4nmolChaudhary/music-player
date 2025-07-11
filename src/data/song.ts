@@ -28,10 +28,10 @@ export const songs = [
 ]
 
 export const playlist = [
-  { id: 1, title: 'Liked Songs', description: 'Songs that you like', tracks: [1, 3, 4, 8, 5] },
+  { id: 1, title: 'Liked Songs', description: 'Songs that you like', tracks: [1, 3, 4, 5, 8] },
   { id: 2, title: 'Favorites', description: 'Your favorite tracks', tracks: [2, 6, 9, 10] },
-  { id: 3, title: 'Made For You', description: 'Music just made for you', tracks: [11, 12, 1] },
-  { id: 4, title: 'Daily Mix', description: 'Tracks to keep you moving', tracks: [4, 2, 9] },
+  { id: 3, title: 'Made For You', description: 'Music just made for you', tracks: [1, 11, 12] },
+  { id: 4, title: 'Daily Mix', description: 'Tracks to keep you moving', tracks: [2, 4, 9] },
 ]
 
 export type Song = {

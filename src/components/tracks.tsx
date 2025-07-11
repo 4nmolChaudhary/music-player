@@ -7,14 +7,18 @@ import { Play } from 'lucide-react'
 import { songs, Song, Playlist } from '@/data/song'
 import { cn } from '@/lib/utils'
 
-const Tracks = ({ playingSong, currentPlayList, setPlayingSong }: { currentPlayList: Playlist | undefined; playingSong: Song | undefined; setPlayingSong: React.Dispatch<React.SetStateAction<Song | undefined>> }) => {
+const Tracks = ({ playingSong, currentPlayList, setPlayingSong, setIsPaused }: { currentPlayList: Playlist | undefined; playingSong: Song | undefined; setPlayingSong: React.Dispatch<React.SetStateAction<Song | undefined>>; setIsPaused: () => void }) => {
   const tracks = songs.filter(d => currentPlayList?.tracks.includes(d.id))
+  const playSong = (track: Song) => {
+    setPlayingSong(track)
+    setIsPaused()
+  }
   return (
     <div className='col-span-6 row-span-5 col-start-1 row-start-8 bg-black p-4'>
       <h1 className='mb-2'>Tracks in the playlist</h1>
-      <div className='space-y-1'>
-        {tracks.slice(0, 4).map(track => (
-          <div key={track.id} onClick={() => setPlayingSong(track)} className={cn('group flex items-center gap-4 p-2 hover:bg-accent/30 transition-colors cursor-pointer', track.id === playingSong?.id && 'bg-accent/20 border border-accent')}>
+      <div className='overflow-y-auto h-[calc(100%-36px)] custom-scroll'>
+        {tracks.map(track => (
+          <div key={track.id} onClick={() => playSong(track)} className={cn('group flex items-center gap-4 p-2 hover:bg-accent/30 transition-colors cursor-pointer', track.id === playingSong?.id && 'bg-accent/20 border border-accent')}>
             <div className='flex items-center gap-4 flex-1 min-w-0'>
               <div className='relative'>
                 <div className='w-full h-full absolute top-0 left-0 bg-accent z-10 mix-blend-color'></div>
