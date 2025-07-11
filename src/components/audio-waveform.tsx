@@ -2,8 +2,9 @@
 
 import { useEffect, useState } from 'react'
 
-export default function AudioWaveform({ playingSongId, isPaused }: { playingSongId: number | undefined; isPaused: boolean }) {
-  const isPlaying = !!playingSongId
+export default function AudioWaveform() {
+  const isPlaying = false
+  const isPaused = false
   const [bars, setBars] = useState<{ positive: number; negative: number }[]>([])
 
   useEffect(() => {

@@ -7,11 +7,14 @@ import { Play } from 'lucide-react'
 import { songs, Song, Playlist } from '@/data/song'
 import { cn } from '@/lib/utils'
 
-const Tracks = ({ playingSong, currentPlayList, setPlayingSong, setIsPaused }: { currentPlayList: Playlist | undefined; playingSong: Song | undefined; setPlayingSong: React.Dispatch<React.SetStateAction<Song | undefined>>; setIsPaused: () => void }) => {
+const Tracks = () => {
+  const playingSong = {}
+  const currentPlayList = { tracks: [] }
+
   const tracks = songs.filter(d => currentPlayList?.tracks.includes(d.id))
   const playSong = (track: Song) => {
-    setPlayingSong(track)
-    setIsPaused()
+    //setPlayingSong(track)
+    //setIsPaused()
   }
   return (
     <div className='col-span-6 row-span-5 col-start-1 row-start-8 bg-black p-4'>

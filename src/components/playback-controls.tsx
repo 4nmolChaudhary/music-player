@@ -5,66 +5,14 @@ import { Pause, SkipForward, SkipBack, Shuffle, Repeat, Play } from 'lucide-reac
 import { songs, Song, Playlist, playlist } from '@/data/song'
 import { cn } from '@/lib/utils'
 
-const PlaybackControls = ({ playingSong, currentPlayList, setPlayingSong, setPlaylist, isPaused, setIsPaused }: { currentPlayList: Playlist | undefined; playingSong: Song | undefined; setPlayingSong: React.Dispatch<React.SetStateAction<Song | undefined>>; setPlaylist: React.Dispatch<React.SetStateAction<Playlist>>; isPaused: boolean; setIsPaused: () => void }) => {
+const PlaybackControls = () => {
   const [mode, setMode] = useState<'repeat' | 'shuffle' | 'none'>('none')
   const isShuffleOn = mode === 'shuffle'
   const isRepeatOn = mode === 'repeat'
+  const isPaused = true
 
-  const changeTrack = (action: 'next' | 'prev') => {
-    if (!currentPlayList || !playingSong || !playlist?.length || !currentPlayList) return
-
-    let playlistIndex = playlist.findIndex(p => p.id === currentPlayList?.id)
-    let trackIndex = currentPlayList.tracks.findIndex(id => id === playingSong.id)
-
-    const currentTracks = currentPlayList.tracks
-
-    if (mode === 'none') {
-      if (action === 'next') {
-        if (trackIndex < currentTracks.length - 1) {
-          trackIndex += 1
-        } else {
-          playlistIndex = (playlistIndex + 1) % playlist.length
-          currentPlayList = playlist[playlistIndex]
-          trackIndex = 0
-        }
-      } else {
-        if (trackIndex > 0) {
-          trackIndex -= 1
-        } else {
-          playlistIndex = (playlistIndex - 1 + playlist.length) % playlist.length
-          currentPlayList = playlist[playlistIndex]
-          trackIndex = currentPlayList.tracks.length - 1
-        }
-      }
-    } else if (mode === 'repeat') {
-      if (action === 'next') {
-        trackIndex = (trackIndex + 1) % currentTracks.length
-      } else {
-        trackIndex = (trackIndex - 1 + currentTracks.length) % currentTracks.length
-      }
-    } else if (mode === 'shuffle') {
-      const availableTrackIds = currentTracks.length > 1 ? currentTracks.filter(id => id !== playingSong.id) : currentTracks
-      const randomIndex = Math.floor(Math.random() * availableTrackIds.length)
-      const randomSongId = availableTrackIds[randomIndex]
-      const randomSong = songs?.find(s => s.id === randomSongId)
-      if (randomSong) {
-        setPlayingSong(randomSong)
-      }
-      return
-    }
-
-    const updatedPlaylist = playlist[playlistIndex]
-    const nextSongId = updatedPlaylist.tracks[trackIndex]
-    const nextSong = songs?.find(song => song.id === nextSongId)
-
-    if (nextSong) {
-      setPlaylist(updatedPlaylist)
-      setPlayingSong(nextSong)
-    }
-  }
-  const onPlayPause = () => {
-    if (playingSong?.id) setIsPaused()
-  }
+  const changeTrack = (action: 'next' | 'prev') => {}
+  const onPlayPause = () => {}
 
   return (
     <>

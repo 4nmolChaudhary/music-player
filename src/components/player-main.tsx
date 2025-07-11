@@ -5,18 +5,15 @@ import { Song } from '@/data/song'
 import { Heart } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
-const PlayerMain = ({ playingSong, likedSongs, setLikedSongs }: { playingSong: Song | undefined; setLikedSongs: React.Dispatch<React.SetStateAction<number[]>>; likedSongs: number[] }) => {
-  const handleLike = () => {
-    if (!playingSong) return
-    if (likedSongs.includes(playingSong.id)) setLikedSongs(likedSongs.filter(d => d !== playingSong.id))
-    else setLikedSongs([...likedSongs, playingSong?.id])
-  }
-  const isLiked = playingSong && likedSongs.includes(playingSong.id)
+const PlayerMain = () => {
+  const isLiked = false
+  const playingSong = undefined
+  const handleLike = () => {}
   if (!playingSong) return <div className='col-span-6 row-span-9 col-start-7 row-start-1 bg-black p-4'></div>
   return (
     <div className='col-span-6 row-span-9 col-start-7 row-start-1 bg-black p-4'>
-      <h2 className='text-4xl tracking-tight h-10'>{playingSong?.title}</h2>
-      <div className='font-[family-name:var(--font-geist-mono)] opacity-75 h-6'>{playingSong?.artist}</div>
+      <h2 className='text-4xl tracking-tight h-10'></h2>
+      <div className='font-[family-name:var(--font-geist-mono)] opacity-75 h-6'></div>
       <div className='relative mx-auto'>
         <div className='w-full h-full absolute top-0 left-0 bg-accent z-10 mix-blend-color'></div>
         <Image className='z-0 mx-auto' priority unoptimized src='/orb.gif' width={500} height={500} alt='my gif' style={{ filter: 'hue-rotate(265deg)' }} />

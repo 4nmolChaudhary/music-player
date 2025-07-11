@@ -22,12 +22,12 @@ export default function Home() {
       <main className='flex justify-center items-center h-screen w-full'>
         <div className='w-[1278px] h-[85%] grid grid-cols-12 grid-rows-12 gap-2'>
           <Playlist currentPlayList={currentPlayList} setPlaylist={setPlaylist} />
-          <AudioWaveform isPaused={isPaused} playingSongId={playingSong?.id} />
-          <Tracks setIsPaused={() => setIsPaused(false)} currentPlayList={currentPlayList} playingSong={playingSong} setPlayingSong={setPlayingSong} />
+          <AudioWaveform />
+          <Tracks />
           <AlbumCover playingSong={playingSong} />
-          <PlayerMain likedSongs={likedSongs} setLikedSongs={setLikedSongs} playingSong={playingSong} />
-          <AboutArtist playingSong={playingSong} />
-          <PlaybackControls isPaused={isPaused} setIsPaused={() => setIsPaused(p => !p)} setPlaylist={setPlaylist} currentPlayList={currentPlayList} playingSong={playingSong} setPlayingSong={setPlayingSong} />
+          <PlayerMain />
+          <AboutArtist />
+          <PlaybackControls />
         </div>
       </main>
     </div>
