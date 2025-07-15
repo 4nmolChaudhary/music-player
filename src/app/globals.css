@@ -82,7 +82,7 @@
 .dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
-  --accent: oklch(0.52 0.12 253.49);
+  --accent: oklch(0.84 0.05 258.69);
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);

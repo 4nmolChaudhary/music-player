@@ -18,9 +18,8 @@ export default function Home() {
   const [likedSongs, setLikedSongs] = useState<number[]>([])
   return (
     <div className='flex min-h-screen flex-col items-center justify-items-center w-full font-[family-name:var(--font-inter-tight)]'>
-      <div style={{ backgroundSize: '22.05px auto', backgroundPosition: 'top left', opacity: '0.1' }} className='absolute h-full top-0 right-0 left-0 -z-1 bg-accent'></div>
       <main className='flex justify-center items-center h-screen w-full'>
-        <div className='w-[1278px] h-[85%] grid grid-cols-12 grid-rows-12 gap-2'>
+        <div className='w-[1278px] h-[85%] grid grid-cols-12 grid-rows-12 gap-2' style={{ gridTemplateRows: 'repeat(12, 3.72rem)' }}>
           <Playlist currentPlayList={currentPlayList} setPlaylist={setPlaylist} />
           <AudioWaveform isPaused={isPaused} playingSongId={playingSong?.id} />
           <Tracks setIsPaused={() => setIsPaused(false)} currentPlayList={currentPlayList} playingSong={playingSong} setPlayingSong={setPlayingSong} />
@@ -33,4 +32,3 @@ export default function Home() {
     </div>
   )
 }
-

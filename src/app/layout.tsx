@@ -19,7 +19,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang='en' suppressHydrationWarning className='dark'>
-      <body className={`${interTight.variable} ${geistMono.variable} antialiased bg-primary-background`}>{children}</body>
+      <body className={`${interTight.variable} ${geistMono.variable} antialiased bg-[#1b1d21]`}>{children}</body>
     </html>
   )
 }
